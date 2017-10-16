@@ -4,6 +4,7 @@ import { render } from 'react-dom';
 export default class App extends Component {
   dog = () => {
     console.log('hey doggy dog');
+    console.log(process.env.NODE_ENV);
   }
 
   render() {
