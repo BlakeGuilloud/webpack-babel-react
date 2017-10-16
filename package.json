@@ -8,7 +8,7 @@
     "react-dom": "^16.0.0"
   },
   "scripts": {
-    "dev": "webpack-dev-server",
+    "dev": "webpack-dev-server --env.activateSourceMaps",
     "build": "webpack -p"
   },
   "devDependencies": {
