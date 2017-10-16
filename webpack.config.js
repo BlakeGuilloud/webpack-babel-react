@@ -8,7 +8,8 @@ const paths = {
   js: path.resolve(__dirname, 'src/js'),
 };
 
-module.exports = {
+module.exports = (env = {}) => ({
+  devtool: env.activateSourceMaps ? 'cheap-module-eval-source-map' : undefined,
   entry: path.join(paths.js, 'app.js'),
   output: {
     path: paths.dist,
@@ -33,4 +34,4 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'],
   },
-};
+});
