@@ -1,6 +1,11 @@
 const path = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+const extractPlugin = new ExtractTextPlugin({
+  filename: 'main.css',
+});
 
 const paths = {
   dist: path.resolve(__dirname, 'dist'),
@@ -19,6 +24,7 @@ module.exports = (env = {}) => ({
     new HtmlWebpackPlugin({
       template: path.join(paths.src, 'index.html'),
     }),
+    extractPlugin,
   ],
   module: {
     rules: [
@@ -28,6 +34,12 @@ module.exports = (env = {}) => ({
         use: [
           'babel-loader',
         ],
+      },
+      {
+        test: /\.scss$/,
+        use: extractPlugin.extract({
+          use: ['css-loader', 'sass-loader'],
+        }),
       },
     ],
   },
