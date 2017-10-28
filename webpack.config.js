@@ -20,6 +20,9 @@ module.exports = (env = {}) => ({
     path: paths.dist,
     filename: 'app.bundle.js',
   },
+  devServer: {
+    historyApiFallback: true,
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(paths.src, 'index.html'),
